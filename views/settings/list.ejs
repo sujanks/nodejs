@@ -1,0 +1,66 @@
+<% layout('../layout') -%>
+
+<div class="row">
+    <div class="span3">
+    	<div class="sidebar-nav">
+			<form method="post" action="/settings/save">
+				<ul class="nav nav-list sidenav" id="settingUl">
+					<li>
+						<a href="#"><i class="icon-plus-sign icon-plus-sign-rignt" id="addSettings"></i><h4>SETTINGS</h4></a>
+					</li>
+					<% for(var i=0; i<groups.length; i++) {
+						if(index==i) { %>
+							<li class="active">
+						<%} else { %>
+							<li>
+						<%} 
+					%>
+							<a href="/settings?index=<%=i %>&site=<%= groups[i].site %>" class="caps"><i class="icon-chevron-right"></i><%= groups[i].name%></a>
+						</li>
+					<%}%>
+				</ul>
+				<div id="saveButton">
+					<button class="btn btn-success">Save</button>
+					<a class="btn btn-danger" href="javascript:window.history.go(-1)">Cancel</a>
+				</div>
+				<input type="hidden" value="<%= sitename%>" name="site"/>
+			</form>
+		</div><!--/.well -->
+	</div><!--/span-->
+
+	
+	<div class="span9">
+		<div class="page-header"><h1><%= sitename%></h1></div>
+		<%if(groups.length > 0 && index < groups.length && groups[index].groupvalues !== undefined) {%>
+			<h2 class="caps"><%= groups[index].name%> Configs</h2>
+			<% if(msg!== undefined && msg.length > 0){%>
+				<span class="label label-success">
+					<%= msg%>
+				</span><p/>
+			<%}%>
+			<table class="table table-bordered table-striped" id="entryTable">
+				<thead>
+					<tr>
+						<th>Key</th>
+						<th>Values</th>
+					</tr> 
+				</thead>
+				<tbody>
+					<% for(var i=0; i<groups[index].groupvalues.length; i++){%>
+							<tr>
+								<td><%= groups[index].groupvalues[i].key%></td>
+								<td><%= groups[index].groupvalues[i].value%></td>
+								
+							</tr>
+						<%}%>
+				</tbody>	
+			</table>
+		<%}%>
+		<span>
+			<%if(groups.length>0){%>
+				<a class="btn btn-success dropdown-toggle" href="/settings/groups/edit?index=<%=index%>&site=<%=sitename%>">Edit</a>
+			<%}%>
+		</span>
+	</div><!--/span-->
+	
+</div><!--/row-->

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css">
+<link rel="stylesheet" type="text/css"
+	href="/stylesheets/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" />
+
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.js"></script>
+<script type="text/javascript" src="/javascripts/scripts.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap-dropdown.js"></script>
+
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="brand" href="/sites">TABLET APP WEB
+					INTERFACE</a>
+				<div class="nav-collapse collapse">
+					<p class="navbar-text pull-right">
+						<% if(!user) {%>
+							<a class="btn" href="/login">Login</a>
+						<%} else {%>
+								Logged in as <span class="caps"><%= user[0].username%></span>
+								<a class="btn btn-danger" href="/logout">Logout</a>
+						<%}%>
+					</p>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+
+	<div class="container"><%- body%></div>
+	<!--/.container-->
+
+</body>
+</html>

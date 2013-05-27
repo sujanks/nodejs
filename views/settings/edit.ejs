@@ -1,0 +1,61 @@
+<% layout('../layout') -%>
+
+<div class="row">
+    <div class="span3">
+    	<div class="sidebar-nav">
+			<ul class="nav nav-list sidenav">
+				<li>
+					<a href="#"><i class="icon-plus-sign icon-plus-sign-rignt"></i><h4>SETTINGS</h4></a>
+				</li>
+				<% for(var i=0; i<groups.length; i++) {
+					if(index==i) { %>
+						<li class="active">
+					<%} else { %>
+						<li>
+					<%} 
+				%>
+						<a href="/settings?index=<%=i %>&site=<%= groups[i].site %>" class="caps"><i class="icon-chevron-right"></i><%= groups[i].name%></a>
+					</li>
+				<%}%>
+			</ul>
+		</div><!--/.well -->
+	</div><!--/span-->
+
+	
+	<div class="span9">
+		<div class="page-header"><h1><%= sitename%></h1></div>
+		<h2 class="caps"><%= groups[index].name%> Configs</h2>
+		<form method="post" action="/settings/groups/update">
+		<table class="table table-bordered table-striped" id="entryTable">
+			<thead>
+				<tr>
+					<th>Key</th>
+					<th>Values</th>
+				</tr> 
+			</thead>
+			<tbody>
+				<%if(groups.length > 0 && index < groups.length && groups[index].groupvalues !== undefined) {%>
+					<% for(var i=0; i<groups[index].groupvalues.length; i++){%>
+							<tr>
+								<td><input name="groupvalues[<%=i%>][key]" value="<%= groups[index].groupvalues[i].key%>"></td>
+								<td><input name="groupvalues[<%=i%>][value]" value="<%= groups[index].groupvalues[i].value%>"></td>
+							</tr>
+						<%}%>
+				<%}%>
+			</tbody>	
+		</table>
+		<input type="hidden" name="name" value="<%= groups[index].name%>"/>
+		<input type="hidden" name="site" value="<%= sitename%>"/>
+		<%if(groups[index].groupvalues === undefined){%>
+			<input type="hidden" id="rowcount" name="rowcount" value="0"/>
+		<%} else {%>
+			<input type="hidden" id="rowcount" name="rowcount" value="<%=groups[index].groupvalues.length%>"/>
+		<%}%>
+		<input type="hidden" name="index" value="<%=index%>"/>
+		<button type="submit" class="btn btn-success">Submit</button>
+		<a class="btn btn-primary dropdown-toggle" id="addRow">Add Row</a>
+		<a type="submit" class="btn btn-danger" href="javascript:window.history.go(-1)">Cancel</a>
+		</form>
+	</div><!--/span-->
+	
+</div><!--/row-->

@@ -1,0 +1,11 @@
+{
+	"sites": [
+		{"name":"NewsComAu"},
+		{"name":"TheAustralian"},
+		{"name":"DailyTelegraph"},
+		{"name":"PerthNow"},
+		{"name":"CourierMail"},
+		{"name":"HeraldSun"},
+		{"name":"AdelaideNow"}
+	]
+}

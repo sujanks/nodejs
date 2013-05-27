@@ -1,0 +1,38 @@
+<% layout('../layout') -%>
+
+<div class="row">
+
+	<div class="span9">
+		<h1><%= group.site%></h1>
+		<p>Add sections and colors</p>
+		<h3>Add Section</h3>
+		<form method="post" action="/groups/update">
+			<table class="table table-striped" id="entryTable">
+				<thead>
+					<tr>
+						<th>Section Name</th>
+						<th>Section # color</th>
+					</tr> 
+				</thead>
+				<tbody>
+					<% for(var i=0; i<group.groupvalues.length; i++){%>
+						<tr>
+						
+							<td><%= group.groupvalues[i].key%></td>
+							<td><%= group.groupvalues[i].value%></td>
+							
+							<!-- 
+							<td><input type="text" name="key"></td>
+							<td><input type="text" name="value"></td>
+							-->
+						</tr>
+					<%}%>
+				</tbody>	
+			</table>
+			<input type="hidden" value="<%= group._id%>" name="_Id" />
+			<input type="hidden" value="1" id="rowcount" name="rowcount"/>
+			<button type="submit" class="btn">Submit</button>
+			<span align="right"><a class="btn btn-success dropdown-toggle" href="#" id="addRow">Add more section</a></span>
+		</form>
+	</div><!--/span-->
+</div><!--/row-->

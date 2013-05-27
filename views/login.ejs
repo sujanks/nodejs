@@ -1,0 +1,13 @@
+<%  layout('layout') -%>
+<form class="form-signin" method="post" action="/login">
+	<h2 class="form-signin-heading">Please sign in</h2>
+	<% if(message && !!message.length) {%>
+		<p><span class="label label-important"><%= message %></span></p>
+	<%}%>
+	<input type="text" class="input-block-level" placeholder="Username" name="username">
+	<input type="password" class="input-block-level" placeholder="Password" name="password">
+	<label class="checkbox">
+	<input type="checkbox" value="remember-me"> Remember me
+	</label>
+	<button class="btn btn-large btn-primary" type="submit">Sign in</button>
+</form>

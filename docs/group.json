@@ -1,0 +1,18 @@
+{
+	{
+		"name" : "sections", 
+		"site" : "NewsComAu"
+		"groupvalues" : [
+			{"key" : "Top Stories", "value" : "0x3c3c3c"},
+			{"key" : "Breaking News", "value" : "0xB51D21"}
+		]
+	},
+	{
+		"name" : "appcolors", 
+		"site" : "NewsComAu",
+		"groupvalues" : [
+			{"key":"sectionTextColor","value":"0x222222"},
+	 		{"key":"sectionSelectedBackgroundColor","value":"0xffffff"}
+		]
+	}
+}

@@ -1,0 +1,16 @@
+<% layout('../layout') -%>
+
+<div class="btn-group">
+	<button class="btn btn-primary">Choose the site..</button>
+	<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+
+		<% for(var i=0; i<sites.length; i++) {%>
+			<li><a href="/settings?site=<%= sites[i].name %>"><%= sites[i].name %></a></li>
+		<%}%> 
+	</ul>
+</div>
+
+
